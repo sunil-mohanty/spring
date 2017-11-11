@@ -5,7 +5,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 
-@Component
+//@Component
 public class CustomDataSource {
 /*
     @Bean

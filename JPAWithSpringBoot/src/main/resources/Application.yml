@@ -1,5 +1,34 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3333/batch?useSSL=false
+    #url: jdbc:mysql://localhost:3333/batch?useSSL=false
+    #password: newpass1
+    #username: c1adb
+
+
+    #dataSourceClassName: oracle.jdbc.pool.OracleDataSource
+    url: jdbc:oracle:thin:@localhost:1521/orcl
     password: newpass1
-    username: c1adb
+    username: C1ADB_LOCAL
+    #driver-class-name: oracle.jdbc.OracleDriver
+
+  logging:
+    level:
+      ROOT: DEBUG
+
+  #jpa:
+   #       properties:
+    #          hibernate: &hibernate
+     #             show_sql: false
+      #            format_sql: false
+       #           order_inserts: true
+        #          order_updates: true
+         #         jdbc:
+          #            batch_size: 100
+           #       cache:
+            #          use_query_cache: false
+             #         use_second_level_cache: false
+              #primary:
+               #   hibernate:
+                #      dialect: org.hibernate.dialect.Oracle10gDialect
+                 #     hbm2ddl:
+                  #        auto: none
