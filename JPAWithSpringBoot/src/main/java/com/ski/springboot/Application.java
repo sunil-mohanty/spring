@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -20,8 +21,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Spring boot initializer
@@ -35,10 +34,14 @@ public class Application {
     @Autowired
     private Environment environment;
 
+    @Autowired
+    private ResourceLoader resourceLoader;
+
     public static void main( String[] args ){
-        System.setProperty("input", "file:/" + new File("C:/Users/609777365/workspace/Demo/git/spring/JPAWithSpringBoot/src/main/resources/students.csv").getAbsolutePath());
+        //@Value(value = "classpath:xmlToParse/companies.xml")
         System.setProperty("output", "file:/" + new File("C:/Users/609777365/workspace/Demo/git/spring/JPAWithSpringBoot/src/main/resources/age.csv").getAbsolutePath());
         SpringApplication.exit(SpringApplication.run(Application.class, args));
+
     }
 
     @Bean
@@ -60,7 +63,7 @@ public class Application {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(hibernateJpaVendorAdapter);
 
-        /*
+        /* Below JPA property setting mechanism is used it you want to customize the defult one and if you are interested to use the java way instead of via application.yml / application.properties
         Map<String, Object> properties = new HashMap<>();
         properties.put("hibernate.dialect", environment.getProperty("spring.jpa.properties.primary.hibernate.dialect"));
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("spring.jpa.properties.primary.hibernate.hbm2ddl.auto"));
@@ -77,7 +80,8 @@ public class Application {
         return em;
     }
 
-    /*
+    /* Use the below data source configuration ,if you want to use java based configuration instead of useing application.yml or application.properties.
+
     @Bean
     public DataSource dataSource() {
 

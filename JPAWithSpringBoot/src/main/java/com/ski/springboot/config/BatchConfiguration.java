@@ -40,7 +40,7 @@ public class BatchConfiguration {
     }
 
     @Bean
-    public FlatFileItemReader<Student> fileReader(@Value("${input}") Resource resource){
+    public FlatFileItemReader<Student> fileReader(@Value(value = "students.csv") Resource resource){
         try {
             return new FlatFileItemReaderBuilder<Student>()
                     .name("file-reader")
