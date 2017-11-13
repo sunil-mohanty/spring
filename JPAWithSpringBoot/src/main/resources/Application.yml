@@ -46,6 +46,7 @@ spring:
     #           hbm2ddl:
     #             auto: none
 
+##Enable the root logger
 #logging:
 #  level:
 #    ROOT: DEBUG

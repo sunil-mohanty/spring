@@ -39,7 +39,7 @@ public class Application {
 
     public static void main( String[] args ){
         //@Value(value = "classpath:xmlToParse/companies.xml")
-        System.setProperty("output", "file:/" + new File("C:/Users/609777365/workspace/Demo/git/spring/JPAWithSpringBoot/src/main/resources/age.csv").getAbsolutePath());
+        System.setProperty("output", "file://" + new File("/Users/sunilmohanty/Documents/MyDrive/projects/java/spring/intellij-workspace/JPAWithSpringBoot/student-details.csv").getAbsolutePath());
         SpringApplication.exit(SpringApplication.run(Application.class, args));
 
     }
